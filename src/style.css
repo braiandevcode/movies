@@ -1,0 +1,182 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  overflow-x: hidden;
+  padding: 0;
+  margin: 0;
+}
+
+/* RESET */
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #1c1d20;
+  color: #BBB;
+}
+img{
+  display: block;
+  max-width: 100%;
+  object-fit: cover;
+  height: 500px;
+  border-radius: 5px;
+}
+#app {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 1.3rem;
+}
+
+main {
+  width: 100%;
+  background-color: #20363aef;
+  min-height: 100vh;
+}
+
+main > section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  justify-content: center;
+  gap: 1rem;
+}
+
+.no-result,
+.titleAllMovies {
+  grid-column: 1 / -1;
+  text-align: center;
+}
+
+.articleMovie__year{
+  color: #cfcfcf;
+}
+
+article.articleMovie {
+  background: #0000005e;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+article.articleMovie h4{
+  white-space: nowrap;      
+  overflow: hidden;     
+  text-overflow: ellipsis; 
+}
+
+/* FORM */
+form{
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.form div{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  column-gap: 1rem;
+}
+
+
+.form div:first-child{
+  width: 50%;
+  column-gap: 1rem;
+}
+
+.boxCheckMovies{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  column-gap: 1rem;
+}
+
+.boxCheckMovies label{
+  white-space: nowrap;
+}
+
+.btn {
+  border: none;
+  cursor: pointer;
+  padding: .3rem .5rem;
+  font-weight: 700;
+  opacity: .8;
+  transition: all .5s ease-in-out;
+}
+
+.btn:hover {
+  opacity: 1;
+}
+
+/* BG COLORS BTN */
+.btn-gray {
+  background-color: #2e2a2a;
+  color: #FFF;
+}
+
+.btn-blue {
+  background-color: #085ea5;
+  color: #FFF;
+}
+
+/* HEADER SEARCH */
+.headerSearch {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+h1 {
+  margin: 1rem 0;
+  font-size: small;
+}
+
+h3 span {
+  margin-left: .5rem;
+}
+
+.form div:first-child input {
+  width: 80%;
+  outline: none;
+  border: none;
+  background-color: #1c1d2083;
+  font-size: medium;
+  color: #BBB;
+}
+
+.btn__search {
+  width: 90px;
+  max-width: 120px;
+}
+
+/* *************MEDIA QUERYS*******************/
+/* 900px */
+@media(min-width:900px) {
+  h1 {
+    font-size: medium;
+  }
+}
+
+/* 1048px */
+@media(min-width:1048px) {
+  h1 {
+    font-size: x-large;
+  }
+}
+
+/* 1600px */
+@media(min-width:1600px) {
+  h1 {
+    font-size: xx-large;
+  }
+}
