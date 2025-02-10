@@ -1,33 +1,83 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
 *,
 *::after,
 *::before {
   box-sizing: border-box;
-  overflow-x: hidden;
   padding: 0;
   margin: 0;
 }
 
-/* RESET */
-body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+/* ELEMENTOS  FLEX */
+body,
+#app,
+article.articleMovie,
+.form,
+.form > div:first-child, 
+.boxCheckMovies,
+.boxCheckMovies div,
+.headerSearch {
   display: flex;
+}
+
+body,
+main > section,
+article.articleMovie,
+.boxCheckMovies {
   justify-content: center;
+}
+
+#app,
+article.articleMovie,
+.form,
+.form > div:first-child,
+.boxCheckMovies,
+.boxCheckMovies div,
+.headerSearch {
+  align-items: center;
+}
+
+.form,
+.boxCheckMovies,
+article.articleMovie,
+.headerSearch{
+  flex-direction: column;
+}
+
+
+/*********************RESET****************************/
+body {
+  font-family: "Rowdies", serif;
+  font-weight: 400;
+  font-style: normal;
   min-height: 100vh;
   background-color: #1c1d20;
   color: #BBB;
+  overflow-x: hidden;
 }
-img{
+
+/* TITULO PRINCIPAL */
+h1{
+  margin: 1rem 0;
+  font-size: small;
+}
+
+/* TODOS LOS SPAN DENTRO DE H3 */
+h3 span {
+  margin-left: .5rem;
+}
+
+/* TODAS LAS IMAGENES POR DEFECTO */
+img {
   display: block;
   max-width: 100%;
   object-fit: cover;
   height: 500px;
   border-radius: 5px;
 }
+
 #app {
   width: 100%;
-  display: flex;
   flex-direction: column;
-  align-items: center;
   row-gap: 1.3rem;
 }
 
@@ -37,72 +87,114 @@ main {
   min-height: 100vh;
 }
 
+/* SECCION GRID */
 main > section {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  justify-content: center;
   gap: 1rem;
 }
 
+/* ESTILO TITULO Y MENSAJE  DE NO RESULTADO */
 .no-result,
 .titleAllMovies {
   grid-column: 1 / -1;
   text-align: center;
 }
 
-.articleMovie__year{
+/* ARTICULOS */
+article.articleMovie {
+  background: #00000038;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+/* AÑO */
+.articleMovie__year {
   color: #cfcfcf;
 }
 
-article.articleMovie {
-  background: #0000005e;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
+/* SUBTITULO PELICULA*/
+article.articleMovie h4 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-article.articleMovie h4{
-  white-space: nowrap;      
-  overflow: hidden;     
-  text-overflow: ellipsis; 
+/* HEADER SEARCH */
+.headerSearch {
+  width: 100%;
+  gap: 2rem;
 }
 
 /* FORM */
-form{
+.form {
   width: 90%;
-  display: flex;
-  justify-content: space-between;
   gap: 1rem;
+  position: relative;
 }
 
-.form div{
-  width: 100%;
-  display: flex;
-  align-items: center;
+/* DE FORM SU PRIMER HIJO */
+.form > div:first-child {
+  min-width: 400px;
+  max-width: 800px;
   justify-content: end;
   column-gap: 1rem;
 }
 
-
-.form div:first-child{
-  width: 50%;
-  column-gap: 1rem;
+/* HIJO DIRECTO INPUT DEL PRIMER HIJO DE FORM */
+.form div:first-child > input {
+  outline: none;
+  border: none;
+  background-color: #1c1d2083;
+  font-size: medium;
+  color: #BBB;
 }
 
-.boxCheckMovies{
+/* CONTENEDOR CHECK DE ORDENAMIENTO  NO VISIBLE*/
+.boxCheckMovies {
   width: 100%;
-  display: flex;
-  align-items: center;
+  position: fixed;
+  height: 20vh;
+  inset: 0;
+  background: #1c1d20;
+  gap: 1rem;
+  transform: translateY(-100%);
+  transition: transform .6s ease-in-out, gap 1.5s ease-in-out;
+}
+
+/* CONTENEDOR CHECK DE ORDENAMIENTO VISIBLE */
+.boxCheckMovies-active{
+  transform: translateY(0);
+}
+
+/* TODOS LOS DIV DE CONTENEDOR CHECKBOX */
+.boxCheckMovies div {
+  width: min-content;
   column-gap: 1rem;
 }
 
-.boxCheckMovies label{
+/* TODOS LOS LABEL DE LOS DIV EN CONTENEDOR CHECKBOX */
+.boxCheckMovies div label {
+  width: min-content;
   white-space: nowrap;
 }
 
+/* TODOS LOS INPUTS CHECK DE LOS DIV EN CONTENEDOR CHECKBOX */
+.boxCheckMovies div input {
+  transform: scale(1.5);
+}
+
+/* CONTENEDOR ICONO DE HAMBURGUESA */
+.burger-icon{
+  position: fixed;
+  right: 1.6rem;
+  top: 1.5rem;
+  display: block;
+  transform: scale(2);
+  z-index: 1000;
+}
+
+/* BOTONES */
 .btn {
   border: none;
   cursor: pointer;
@@ -112,8 +204,15 @@ form{
   transition: all .5s ease-in-out;
 }
 
+/* BTN HOVER */
 .btn:hover {
   opacity: 1;
+}
+
+/* BTN SEARCH */
+.btn__search {
+  width: 90px;
+  max-width: 120px;
 }
 
 /* BG COLORS BTN */
@@ -122,41 +221,10 @@ form{
   color: #FFF;
 }
 
+/* BG COLORS BTN */
 .btn-blue {
   background-color: #085ea5;
   color: #FFF;
-}
-
-/* HEADER SEARCH */
-.headerSearch {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2rem;
-}
-
-h1 {
-  margin: 1rem 0;
-  font-size: small;
-}
-
-h3 span {
-  margin-left: .5rem;
-}
-
-.form div:first-child input {
-  width: 80%;
-  outline: none;
-  border: none;
-  background-color: #1c1d2083;
-  font-size: medium;
-  color: #BBB;
-}
-
-.btn__search {
-  width: 90px;
-  max-width: 120px;
 }
 
 /* *************MEDIA QUERYS*******************/
@@ -164,6 +232,29 @@ h3 span {
 @media(min-width:900px) {
   h1 {
     font-size: medium;
+  }
+
+  .form {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .boxCheckMovies {
+    justify-content: end;
+  }
+}
+
+/* 570px */
+@media(min-width: 570px) {
+  .boxCheckMovies {
+    position: static;
+    transform: translateY(0);
+    background: transparent;
+    flex-direction: row;
+  }
+
+  .burger-icon{
+    display: none;
   }
 }
 
